@@ -1,6 +1,6 @@
 import flask
 from zebrashark.app import app
-
+from hashlib import md5
 import logging
 
 logger = logging.getLogger(__name__)
@@ -14,10 +14,10 @@ def signup():
 def getform():
     firstname = request.form['firstNameInput']
     lastname = request.form['lastNameInput']
-    username = request.form['usernameInput']
+    name = firstname + lastname
+    email = request.form['usernameInput']
     pw1 = request.form['passwordInput']
     pw2 = request.form['confirmPasswordInput']
     if pw1 == pw2:
         hash = md5(pw1).hexdigest()
-
-    
+    user = User(email_address=email, name=name, hash=hash)

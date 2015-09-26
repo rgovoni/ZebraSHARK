@@ -3,21 +3,31 @@ from zebrashark.app import app
 from functools import wraps
 from flask import request, Response
 import logging
+from zebrashark.models.user import User
+from hashlib import md5
 
 logger = logging.getLogger(__name__)
 
 @app.route("/api/login", methods=["POST"])
 def login():
     logger.info("Got signup request: " + repr(flask.request.form))
-    return '', 200
+    username = request.form['username']
+    password = request.form['password']
+    if check_auth(username, password):
+        return '', 200
+    else:
+        return '', 401
 
 def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
     """
-    username = request.form['username']
-    password = request.form['password']
-    return username == 'admin' and password == 'secret'
+    user=User.get_by(email_address=username)
+    if user == None:
+        return False
+    if md5(password).hexdigest() != user.hash
+        return False
+    return True
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
