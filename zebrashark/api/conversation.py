@@ -4,7 +4,7 @@ from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
 from zebrashark.models.question import Question
 from zebrashark.models.user import User
-
+from flask import request
 from hashlib import md5
 
 import logging
@@ -36,3 +36,16 @@ def get_conversations():
         question=question)
 
     return flask.jsonify({"conversations": [conversation.to_json()]}), 200
+
+@app.route('/api/conversation/<id>/entry', methods=['POST'])
+@requires_auth
+def add_new_entry(id):
+    message = request.get_json()
+    spec_message = message['text']
+    spec_user = message['user']
+    spec_time = datetime.now()
+    conversation = Conversation.get(id)
+    new_message = ConversationEntry(text=spec_message, user=spec_user, time=spec_time)
+    conversation.append(new_message)
+    conversation.save()
+    return '', 200
