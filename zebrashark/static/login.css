@@ -1,0 +1,12 @@
+.login-title {
+	text-align: center;
+}
+
+.log-in-inputs {
+	padding:1.5rem;
+	border: 0.5rem solid black;
+}
+
+.submit-button {
+	padding-top: 5%;
+}
