@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 @app.route("/api/login", methods=["POST"])
 def login():
     logger.info("Got signup request: " + repr(flask.request.form))
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form['emailInput']
+    password = request.form['passwordInput']
     if check_auth(username, password):
         return '', 200
     else:
