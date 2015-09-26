@@ -1,6 +1,8 @@
 from rom import Model, String, OneToMany, OneToOne
 from zebrashark.models.answer import Answer
 from zebrashark.models.question import Stance
+from zebrashark.models.vote import Vote
+
 
 
 class User(Model):
