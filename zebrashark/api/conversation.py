@@ -19,14 +19,18 @@ def get_conversations():
 
     user_two = User.get_by(email_address="unicorn_saver@gmail.com") or\
                User(email_address="unicorn_saver@gmail.com", name="Jane", hash=hash)
+    ce1 = ConversationEntry(user=user_one, text="KILL ALL UNICORNS!!!1111", time=datetime.now())
+    ce2 = ConversationEntry(user=user_two, text="NNNooooooooooo", time=datetime.now())
+    ce1.save()
+    ce2.save()
     entries = [
-        ConversationEntry(user=user_one, text="KILL ALL UNICORNS!!!1111", time=datetime.now()),
-        ConversationEntry(user=user_two, text="NNNooooooooooo", time=datetime.now())
+        ce1,
+        ce2
     ]
     participants = [
         ConversationParticipant(user=user_one, stance="KILL ALL UNICORNS"),
         ConversationParticipant(user=user_two, stance="SAVE THE UNICORNS"),
-                    ]
+    ]
     question_text = "Should unicorn hunting be outlawed?"
     question = Question.get_by(text=question_text) or Question(text=question_text, topic="Conservation")
     conversation = Conversation(
