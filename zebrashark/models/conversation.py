@@ -3,7 +3,6 @@ from rom import Model, String, OneToMany, OneToOne, DateTime
 class Conversation(Model):
     votes = OneToMany('Vote')
     entries = OneToMany('ConversationEntry')
-    topic = String(required=True)
     participants = OneToMany('ConversationParticipant')
     question = OneToOne('Question', 'no action')
 

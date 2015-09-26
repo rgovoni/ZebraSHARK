@@ -2,6 +2,7 @@ from datetime import datetime
 import flask
 from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
+from zebrashark.models.question import Question
 from zebrashark.models.user import User
 
 from hashlib import md5
@@ -20,11 +21,11 @@ def get_conversations():
         ConversationParticipant(user=user_one, stance="KILL ALL UNICORNS"),
         ConversationParticipant(user=user_two, stance="SAVE THE UNICORNS"),
                     ]
+    question = Question(text="Should unicorn hunting be outlawed?", topic="Conservation")
     conversation = Conversation(
         votes=[],
         entries=entries,
-        topic='Conservation',
         participaints=participants,
-        question="Should unicorn hunting be outlawed?")
+        question=question)
     
     return flask.jsonify([conversation.to_dict()]), 200
