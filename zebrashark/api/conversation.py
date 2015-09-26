@@ -1,4 +1,5 @@
 from datetime import datetime
+from random import randint
 import flask
 from zebrashark.api.login import requires_auth
 from zebrashark.app import app
@@ -9,6 +10,8 @@ from flask import request, jsonify
 from hashlib import md5
 
 import logging
+from zebrashark.models.vote import Vote
+
 logger = logging.getLogger(__name__)
 
 @app.route('/api/conversation', methods=['GET'])
@@ -51,8 +54,11 @@ def add_new_entry(id):
     user = User.get(email)
     spec_time = datetime.now()
     conversation = Conversation.get(id)
-    new_message = ConversationEntry(text=spec_message, user=user, time=spec_time)
-    conversation.append(new_message)
+    new_message = ConversationEntry(text=spec_message, user=spec_user, time=spec_time)
+    conversation.entries.append(new_message)
+    score = randint(-8, 20)
+    vote = Vote(user=user, score=score, conversation=conversation)
+    conversation.votes.append(vote)
     conversation.save()
     return '', 200
 
