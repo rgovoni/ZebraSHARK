@@ -60,7 +60,7 @@ def setup_hardcoded_data():
         question=question)
     conversation.save()
 
-setup_hardcoded_data()
+#setup_hardcoded_data()
 
 if __name__ == "__main__":
     app.run()
