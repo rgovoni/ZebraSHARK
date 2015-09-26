@@ -13,12 +13,9 @@ logging.basicConfig(level=logging.INFO)
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 redis = redis.from_url(redis_url)
 
-from rom import util
+import rom.util
 
-redis_server = urlparse(redis_url)
-redis_host = redis_server.hostname
-redis_port = redis_server.port
-util.set_connection_settings(host=redis_host, port=redis_port, db=0)
+rom.util.CONNECTION = redis
 
 app = Flask(__name__)
 
