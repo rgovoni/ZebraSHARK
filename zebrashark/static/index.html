@@ -1,7 +1,7 @@
 <script src="/static/handlebars-v4.0.2.js"></script>
 <script src="/static/jquery-2.1.4.min.js"></script>
-<link rel="stylesheet" href="/static/normalize.css">
 <link rel="stylesheet" href="/static/skeleton.css">
+<link rel="stylesheet" href="/static/normalize.css">
 <link rel="stylesheet" href="/static/header.css">
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,600,800,200' rel='stylesheet' type='text/css'>
 
@@ -92,8 +92,8 @@
   var source = $("#home-template").html();
   var template = Handlebars.compile(source);
 
-  $.getJSON( "/api/user/<id>/conversation", function( data ) {
-    console.log('getting data yoooo')
+  $.getJSON( "/api/conversation", function( data ) {
+    console.log(data);
   });
 
   var text = '{"yours": [{"id": "001", "question": "What is the best color?", "rating": "128",'+ 

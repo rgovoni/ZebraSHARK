@@ -54,7 +54,7 @@ def add_new_entry(id):
     user = User.get(email)
     spec_time = datetime.now()
     conversation = Conversation.get(id)
-    new_message = ConversationEntry(text=spec_message, user=spec_user, time=spec_time)
+    new_message = ConversationEntry(text=spec_message, user=user, time=spec_time)
     conversation.entries.append(new_message)
     score = randint(-8, 20)
     vote = Vote(user=user, score=score, conversation=conversation)
