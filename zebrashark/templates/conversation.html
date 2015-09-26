@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<script src="../static/handlebars-v4.0.2.js"> </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="../static/app.js"> </script>
+<!-- NORMALIZE IS POSSIBLY NOT FOR US -->
+<link rel="stylesheet" href="../static/normalize.css">
+<link rel="stylesheet" href="../static/skeleton.css">
 
+<body>
+<!--This is our template. -->
+<!--Data will be inserted in its according place, replacing the brackets.-->
+<script id="convo-template" type="text/x-handlebars-template">
+  <div class="nav">
+    <h5>Navigation</h5>
+  </div>
+  <a class="button" href="#">Return</a>
+  <div class="intro container">
+    <div class="row">
+      <div class="ten columns">
+        <h3>Q: {{question}}</h3>
+      </div>
+      <div class="two columns">
+        <h3 class="u-pull-right">+{{rating}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      Last updated on {{message.0.time}}
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <p class="u-pull-left">{{user.0.name}} says:<br> {{user.0.stance}}</p>
+      </div>
+      <div class="six columns">
+        <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
+    </div>
+  </div>
+
+  <div class="messages">
+    {{#each message}}
+    <div class="message" style="background-color: #ccc;margin-bottom: 5rem;padding: 3rem 3rem 0rem">
+      <div class="row">
+        <div class="two columns">
+          <h5>{{name}}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          {{content}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="five columns u-pull-right">
+          <h5 class="u-pull-right">{{time}}</h5>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</script>
 </body>
-</html>

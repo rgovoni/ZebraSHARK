@@ -1,0 +1,25 @@
+.profile-img {
+	border-radius: 50%;
+	width: 200px;
+	height:200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
+}
+
+.score-container {
+	text-align: center;
+	border: 0.5rem solid black;
+	margin-bottom: 2rem;
+
+}
+
+.score-container h5 {
+	margin-top: 2rem;
+}
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
