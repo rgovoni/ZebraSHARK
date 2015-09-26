@@ -1,5 +1,6 @@
 from datetime import datetime
 import flask
+from flask import request
 from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
 from zebrashark.models.user import User
@@ -28,3 +29,8 @@ def get_conversations():
         question="Should unicorn hunting be outlawed?")
     
     return flask.jsonify([conversation.to_dict()]), 200
+
+@app.route('/api/conversation/<id>', methods=['GET'])
+def get_conversation(id):
+    Conversation.get_by(id=id)
+    return
