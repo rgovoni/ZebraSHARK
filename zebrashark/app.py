@@ -11,5 +11,8 @@ def echo(value):
     response = {"input": value}
     return flask.jsonify(response)
 
+def index():
+    return flask.render_template('index.html')
+
 if __name__ == "__main__":
     app.run()
