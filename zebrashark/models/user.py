@@ -1,4 +1,5 @@
 from rom import Model, String, OneToMany, OneToOne
+from zebrashark.gravatar import gravatar_url
 from zebrashark.models.answer import Answer
 from zebrashark.models.question import Stance
 from zebrashark.models.vote import Vote
@@ -18,5 +19,6 @@ class User(Model):
         return {
             "email": self.email_address,
             "name": self.name,
-            "id": self.id
+            "id": self.id,
+            "avatar_url": gravatar_url(self.email_address)
         }

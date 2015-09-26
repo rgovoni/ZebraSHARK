@@ -26,7 +26,9 @@ def get_conversations():
     participants = [
         ConversationParticipant(user=user_one, stance="KILL ALL UNICORNS"),
         ConversationParticipant(user=user_two, stance="SAVE THE UNICORNS"),
-                    ]
+    ]
+    question_text = "Should unicorn hunting be outlawed?"
+    question = Question.get_by(text=question_text) or Question(text=question_text, topic="Conservation")
     conversation = Conversation(
         votes=[],
         entries=entries,
@@ -34,9 +36,3 @@ def get_conversations():
         question=question)
 
     return flask.jsonify({"conversations": [conversation.to_json()]}), 200
-
-
-@app.route('/api/conversation/<id>', methods=['GET'])
-def get_conversation(id):
-    Conversation.get_by(id=id)
-    return
