@@ -24,3 +24,6 @@ def getform():
         hash = md5(pw1).hexdigest()
     user = User(email_address=email, name=name, hash=hash)
     user.save()
+    logger.info("Got signup request: " + repr(flask.request.form))
+    return '', 200
+

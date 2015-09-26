@@ -26,6 +26,13 @@ import zebrashark.api.login
 import zebrashark.views
 
 
+def setup_hardcoded_data():
+    user_one = 'demosthenes'
+    user_two = 'locke'
+    question = ''
+    conversation = ''
+
 
 if __name__ == "__main__":
+    setup_hardcoded_data()
     app.run()
