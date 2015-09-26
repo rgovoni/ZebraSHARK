@@ -13,27 +13,29 @@
 	href="../static/profile.css" />
 </head>
 <body>
+<!--<script id="convo-template" type="text/x-handlebars-template">-->
 
-	<div class="container">
-		<div class="row">
-			<div class="profile-img-container columns six">
-			<!-- profile image -->
-				<img src="http://images.fineartamerica.com/images-medium-large/sleeping-puppy-on-white-background-square-dog-photography.jpg" class="profile-img">
+		<div class="container">
+			<div class="row">
+				<div class="profile-img-container columns six">
+					<!-- profile image -->
+					<img src="http://images.fineartamerica.com/images-medium-large/sleeping-puppy-on-white-background-square-dog-photography.jpg" class="profile-img">
+				</div>
+				<div class="profile-info six">
+					<h3 class="profile-name">{{user.name}}</h3>
+					<p>{{user.address}}</p>
+				</div>
 			</div>
-			<div class="profile-info six">
-				<h3 class="profile-name">{{user.name}}</h3>
-				<p>{{user.address}}</p>
+			<!-- edit profile picture? -->
+			<div class="row score-container">
+				<h5 class="columns six">Total Score: <span>{{user.total_score}}</span></h5> <!-- assuming total_score and avg_score-->
+				<h5 class="columns six">Average Score: <span>{{user.avg_score}}</span></h5>
 			</div>
-		</div>
-		<!-- edit profile picture? -->
-		<div class="row score-container">
-			<h5 class="columns six">Total Score: <span>{{user.total_score}}</span></h5> <!-- assuming total_score and avg_score-->
-			<h5 class="columns six">Average Score: <span>{{user.avg_score}}</span></h5>
-		</div>
 
-		<div class="row profile-conversations">
-			<h3>Conversations</h3>
+			<div class="row profile-conversations">
+				<h3>Conversations</h3>
+			</div>
 		</div>
-	</div>
+	<!--</script>
 </body>
 </html>

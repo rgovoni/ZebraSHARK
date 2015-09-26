@@ -11,12 +11,15 @@
 .score-container {
 	text-align: center;
 	border: 0.5rem solid black;
+	margin-bottom: 2rem;
+
 }
 
 .score-container h5 {
 	margin-top: 2rem;
 }
 
-.profile-conversations {
-	
+.clearfix {
+  overflow: auto;
+  zoom: 1;
 }
