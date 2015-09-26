@@ -1,7 +1,12 @@
 from flask import Flask, render_template
 import flask
+import redis
 
 app = Flask(__name__)
+
+db = redis.Redis('URL')
+
+project = databaseFunctions.addNewProject('http://')
 
 @app.route("/")
 def index():
