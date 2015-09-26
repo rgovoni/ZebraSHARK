@@ -1,11 +1,6 @@
-class Answer(db.Model):
-    response = db.Column(db.Integer)
-    text = db.Column(db.String)
+from rom import Model, OneToOne, Boolean
 
-    def as_dict(self):
-        obj = {
-            'response': self.response,
-            'text': self.text,
-            ...
-        }
-        return obj
+class Answer(Model):
+    supports = Boolean(required=True)
+    question = OneToOne('Question', 'no action')
+    user = OneToOne('User', 'no action')

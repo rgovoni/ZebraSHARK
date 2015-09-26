@@ -1,10 +1,14 @@
-class Question(db.Model):
-    text = db.Column(db.String)
-    topic = db.Column(db.String)
+from rom import Model, String, OneToMany, OneToOne
 
-    def as_dict(self):
-        obj = {
-            'name': self.name,
-            ...
-        }
-        return obj
+
+class Question(Model):
+    text = String(required=True, unique=True)
+    topic = String(required=True)
+    conversation = OneToMany('Conversation')
+    stance = OneToMany('Stance')
+
+
+class Stance(Model):
+    text = String(required=True)
+    user = OneToOne('User', 'no action')
+    question = OneToOne('Question', 'no action')
