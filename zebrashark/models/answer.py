@@ -2,5 +2,5 @@ from rom import Model, OneToOne, Boolean
 
 class Answer(Model):
     supports = Boolean(required=True)
-    question = OneToOne('Question')
-    user = OneToOne('User')
+    question = OneToOne('Question', 'no action')
+    user = OneToOne('User', 'no action')

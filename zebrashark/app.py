@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 import zebrashark.api.signup
+import zebrashark.api.conversation
 
 import zebrashark.views
 

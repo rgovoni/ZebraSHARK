@@ -6,10 +6,10 @@ class Question(Model):
     topic = String(required=True)
     stance = String(required=True)
     conversation = OneToMany('Conversation')
-    stance_value = OneToOne('Stance')
+    stance_value = OneToOne('Stance', 'no action')
 
 
 class Stance(Model):
     text = String(required=True)
-    user = OneToOne('User')
-    question = OneToOne('Question')
+    user = OneToOne('User', 'no action')
+    question = OneToOne('Question', 'no action')
