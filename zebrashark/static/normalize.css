@@ -426,6 +426,21 @@ th {
   padding: 0;
 }
 
+.home-headers{
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  font-size: 1.4rem;
+}
+hr.small {
+  float:left;
+  width: 30%;
+  margin-bottom: 5rem;
+  margin-top: 1rem;
+}
+.previewConvo {
+  clear: both;
+}
 .spaced {
   margin: 3rem 0;
 }
