@@ -92,8 +92,8 @@
   var source = $("#home-template").html();
   var template = Handlebars.compile(source);
 
-  $.getJSON( "/api/user/<id>/conversation", function( data ) {
-    console.log('getting data yoooo')
+  $.getJSON( "/api/conversation", function( data ) {
+    console.log('getting data yoooo');
   });
 
   var text = '{"yours": [{"id": "001", "question": "What is the best color?", "rating": "128",'+ 
