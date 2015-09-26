@@ -1,6 +1,5 @@
 <script src="handlebars-v4.0.2.js"> </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<!-- NORMALIZE IS POSSIBLY NOT FOR US -->
 <link rel="stylesheet" href="../static/normalize.css">
 <link rel="stylesheet" href="../static/skeleton.css">
 <link rel="stylesheet" href="../static/header.css">
@@ -13,7 +12,7 @@
            <li><a href="#">Logout</a></li>
            <li><a href="profile.html">Profile</a></li>
            <li><a href="#">About</a></li>
-           <li><a href="#">Home</a></li>
+           <li><a href="index.html">Home</a></li>
        </ul>
     </div>
   </div>
@@ -28,17 +27,23 @@
           <h3>Q: {{question}}</h3>
         </div>
         <div class="two columns">
-          <h3 class="u-pull-right">+ {{rating}}</h3>
+          <h3 style="u-pull-right">+ {{rating}}</h3>
         </div>
       </div>
-      <div class="row">
-        <div class="six columns">
-          <p class="u-pull-left">{{user.0.name}} says:<br> {{user.0.stance}}</p>
-        </div>
-        <div class="six columns">
-          <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
-        </div>
+      <div class="row spaced">
+      <div class="two columns">
+        <img class="img-circle" src="../static/img/chuck.jpg">
       </div>
+      <div class="four columns">
+        <p><b>{{user.0.name}} says:</b><br> {{user.0.stance}}</p>
+      </div>
+      <div class="four columns">
+        <p class="u-pull-right"><b>{{user.1.name}} says:</b><br> {{user.1.stance}}</p>
+      </div>
+      <div class="two columns">
+        <img class="img-circle u-pull-right" src="../static/img/dave.jpg">
+      </div>
+    </div>
       <div class="row" style="text-align:center">
         <a class="button convo" href={{id}}>View Conversation</a>
       </div>
@@ -60,13 +65,18 @@
         <h3 class="u-pull-right">+ {{rating}}</h3>
       </div>
     </div>
-    <div class="row">
-      <div class="six columns">
-        <p>{{user.0.name}} says:</p>
-        <p> {{user.0.stance}}</p>
+    <div class="row spaced">
+      <div class="two columns">
+        <img class="img-circle" src="../static/img/chuck.jpg">
       </div>
-      <div class="six columns">
-        <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
+      <div class="four columns">
+        <p><b>{{user.0.name}} says:</b><br> {{user.0.stance}}</p>
+      </div>
+      <div class="four columns">
+        <p class="u-pull-right"><b>{{user.1.name}} says:</b><br> {{user.1.stance}}</p>
+      </div>
+      <div class="two columns">
+        <img class="img-circle u-pull-right" src="../static/img/dave.jpg">
       </div>
     </div>
     <div class="row" style="text-align:center">
