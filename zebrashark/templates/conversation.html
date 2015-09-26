@@ -29,11 +29,12 @@
         <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
       </div>
     </div>
+    <hr>
   </div>
 
   <div class="messages container">
     {{#each message}}
-    <div class="message" style="background-color: #ccc;margin-bottom: 5rem;padding: 3rem 3rem 0rem">
+    <div class="message">
       <div class="row">
         <div class="two columns">
           <h5>{{name}}</h5>
@@ -46,10 +47,11 @@
       </div>
       <div class="row">
         <div class="five columns u-pull-right">
-          <h5 class="u-pull-right">{{time}}</h5>
+          <h5 class="u-pull-right" style="margin: 2rem 0">{{time}}</h5>
         </div>
       </div>
     </div>
+    <hr>
     {{/each}}
   </div>
 </script>
@@ -57,7 +59,8 @@
 <script>
   var source = $("#convo-template").html();
   var template = Handlebars.compile(source);
-  var text = '{"question": "What is the best color?",'+
+  var convoID = window.location.href.split('#')[1].toString();
+  var text = '{"001": {"question": "What is the best color?",'+
               '"rating": "128",'+
               '"user": ['+
                 '{"name": "Chuck", "stance": "I have always loved blue."},'+
@@ -65,8 +68,13 @@
               '"message": ['+
                 '{"name": "Chuck", "time": "Tuesday, July 4th, 4:38PM", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a pretium ante, at ultricies mauris. Phasellus ac odio lobortis, dignissim augue sed, sagittis enim. Pellentesque vitae tincidunt urna. Ut consequat feugiat fermentum. Fusce quis mauris molestie, cursus dolor ac, rhoncus mauris. Pellentesque vulputate nunc et volutpat viverra. Aenean laoreet lacus ut diam lobortis ornare.Nulla mollis leo nulla, vitae consectetur ex volutpat ut. Fusce cursus, urna interdum ultricies porta, dui urna vehicula orci, at consectetur sapien ligula ultrices purus. Praesent nunc magna, gravida ut lectus in, mattis ultrices quam. Ut convallis nisl eu massa luctus, a cursus velit tempus. Proin imperdiet aliquet consectetur. Mauris placerat eu justo id tincidunt. Nam et nisl arcu.Cras eu tortor lacus. Donec neque libero, dictum ac lacus nec, finibus tempor metus. In nec nisl diam. Nullam ac ullamcorper nunc. Maecenas vestibulum pharetra blandit. Aliquam at elementum dui. Ut ac suscipit urna. Integer lectus nisi, pretium ut consequat a, sagittis et enim. Nullam maximus orci ac tincidunt blandit. Maecenas quam est, facilisis at mauris sed, suscipit congue mi. Aenean aliquam a ipsum non varius. Quisque ultrices enim lacus, in finibus elit interdum pharetra. Quisque vel ex tristique, laoreet dui in, tristique lectus. Morbi id augue malesuada, facilisis lectus nec, congue justo. Maecenas non eros ultrices, porta arcu semper, condimentum purus. Curabitur id tincidunt est."},'+
                 '{"name": "Dave", "time": "Tuesday, July 4th, 5:05PM", "content": "why"},'+
-                '{"name": "Chuck", "time": "Thursday, July 6th, 6:00PM", "content": "i hate you"}]}';        
+                '{"name": "Chuck", "time": "Thursday, July 6th, 6:00PM", "content": "i hate you"}]},'+
+              '"002": {"question": "How do you feel about cats?"},'+
+              '"003": {"question": "How about that pope guy?"}}';
+
   var context = JSON.parse(text);
-  $(document.body).append(template(context));
+  var newContext = context[convoID];
+  
+  $(document.body).append(template(newContext));
 </script>
 </body>

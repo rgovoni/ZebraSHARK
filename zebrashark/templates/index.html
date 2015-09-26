@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="row" style="text-align:center">
-        <a class="button" href="conversation.html">View Conversation</a>
+        <a class="button convo" href={{id}}>View Conversation</a>
       </div>
     </div>
     <hr>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="row" style="text-align:center">
-      <a class="button" href="#">View Conversation</a>
+      <a class="button convo" href={{id}}>View Conversation</a>
     </div>
     <hr>
     {{/each}}
@@ -73,6 +73,11 @@
                 '"featured":[{"id": "003", "question": "How about that pope guy?", "rating": "103",'+
                           '"user": [{"name": "Chuck", "stance": "The pope is dope."},{"name": "Dave", "stance": "Nah, bruh."}]}]}';              
   var context = JSON.parse(text);
+
   $(document.body).append(template(context));
+  $("a.convo").each(function () {
+    var orig = $(this).attr('href');
+    $(this).attr('href', 'conversation.html#'+orig);
+  })
 </script>
 </body>
