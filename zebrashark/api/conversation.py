@@ -34,5 +34,5 @@ def get_conversations():
         entries=entries,
         participaints=participants,
         question=question)
-    
-    return flask.jsonify([conversation.to_dict()]), 200
+
+    return flask.jsonify([conversation.to_json()]), 200
