@@ -8,6 +8,10 @@ from zebrashark.app import app
 def view_index():
     return render_template('index.html')
 
+@app.route("/login")
+def view_login():
+    return render_template('login.html')
+
 @app.route("/test/<value>")
 def view_echo(value):
     response = {"input": value}
