@@ -5,7 +5,7 @@ from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
 from zebrashark.models.question import Question
 from zebrashark.models.user import User
-from flask import request
+from flask import request, jsonify
 from hashlib import md5
 
 import logging
@@ -53,4 +53,8 @@ def add_new_entry(id):
 
 @app.route('/api/conversation/<id>')
 def get_conversation(id):
-    return Conversation.get(id).to_json()
+    conversation = Conversation.get(id)
+    if conversation == None:
+        return '', 404
+    else:
+        return jsonify(conversation.to_json)
