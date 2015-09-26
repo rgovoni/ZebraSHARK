@@ -1,18 +1,24 @@
 from datetime import datetime
 import flask
-from flask import request
 from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
+from zebrashark.models.question import Question
 from zebrashark.models.user import User
 
 from hashlib import md5
+
+import logging
+logger = logging.getLogger(__name__)
 
 @app.route('/api/conversation', methods=['GET'])
 def get_conversations():
     password = "hunter2"
     hash = md5(password).hexdigest()
-    user_one = User(email_address="unicorn_hunter@gmail.com", name="Bob", hash=hash)
-    user_two = User(email_address="unicorn_saver@gmail.com", name="Jane", hash=hash)
+    user_one = User.get_by(email_address="unicorn_hunter@gmail.com") or\
+               User(email_address="unicorn_hunter@gmail.com", name="Bob", hash=hash)
+
+    user_two = User.get_by(email_address="unicorn_saver@gmail.com") or\
+               User(email_address="unicorn_saver@gmail.com", name="Jane", hash=hash)
     entries = [
         ConversationEntry(user=user_one, text="KILL ALL UNICORNS!!!1111", time=datetime.now()),
         ConversationEntry(user=user_two, text="NNNooooooooooo", time=datetime.now())
@@ -24,11 +30,11 @@ def get_conversations():
     conversation = Conversation(
         votes=[],
         entries=entries,
-        topic='Conservation',
         participaints=participants,
-        question="Should unicorn hunting be outlawed?")
-    
-    return flask.jsonify([conversation.to_dict()]), 200
+        question=question)
+
+    return flask.jsonify({"conversations": [conversation.to_json()]}), 200
+
 
 @app.route('/api/conversation/<id>', methods=['GET'])
 def get_conversation(id):
