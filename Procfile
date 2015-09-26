@@ -1,1 +1,1 @@
-web: gunicorn zebrashark:app --log-file=-
+web: gunicorn zebrashark.app:app --log-file=-
