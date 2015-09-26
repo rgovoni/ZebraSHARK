@@ -1,6 +1,8 @@
-from rom import Model, String, OneToMany, OneToOne, DateTime
+from rom import Model, String, OneToMany, OneToOne, DateTime, FULL_TEXT
+
 
 class Conversation(Model):
+    #title = String(default='', index=True, keygen=FULL_TEXT)
     votes = OneToMany('Vote')
     entries = OneToMany('ConversationEntry')
     participants = OneToMany('ConversationParticipant')

@@ -6,6 +6,8 @@ import redis
 import os
 
 import logging
+from zebrashark.models.vote import Vote
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -34,8 +36,10 @@ def setup_hardcoded_data():
     conversation = ''
     password = "hunter2"
     hash = md5(password).hexdigest()
-    user_one = User(email_address="unicorn_hunter@gmail.com", name="Bob", hash=hash)
-    user_two = User(email_address="unicorn_saver@gmail.com", name="Jane", hash=hash)
+    user_one = User.get_by(email_address="unicorn_hunter@gmail.com") or \
+               User(email_address="unicorn_hunter@gmail.com", name="Bob", hash=hash)
+    user_two = User.get_by(email_address="unicorn_saver@gmail.com") or \
+               User(email_address="unicorn_saver@gmail.com", name="Jane", hash=hash)
     user_one.save()
     user_two.save()
     logger.error("USER IDS %s %s", user_one.id, user_two.id)
@@ -54,13 +58,13 @@ def setup_hardcoded_data():
     question_text = "Should unicorn hunting be outlawed?"
     question = Question.get_by(text=question_text) or Question(text=question_text, topic="Conservation")
     conversation = Conversation(
-        votes=[],
+        votes=[Vote(user=user_one, score=1)],
         entries=entries,
         participaints=participants,
         question=question)
     conversation.save()
 
-#setup_hardcoded_data()
+setup_hardcoded_data()
 
 if __name__ == "__main__":
     app.run()
