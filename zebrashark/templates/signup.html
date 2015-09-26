@@ -1,10 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+	<meta charset="UTF-8">
+	<title></title>
+	<link type="text/css" rel="stylesheet"
+	href="../static/normalize.css" />
+	<link type="text/css" rel="stylesheet"
+	href="../static/skeleton.css" />
+	<link type="text/css" rel="stylesheet"
+	href="../static/signup.css" />
 </head>
 <body>
+	<div class="container u-full-width">
+		<div class="row">
+			<div class="sign-up-title twelve columns">
+				<h3>Sign Up</h3>
+			</div>
+		</div>
+		<div class="row u-full-width columns offset-by-three">
+			<form>
+				<div class="row ">
+					<div class="three columns">
+						<label for="firstNameInput">First Name</label>
+						<input class="u-full-width" type="text" placeholder="First Name" id="firstNameInput">
+					</div>
+					<div class="three columns">
+						<label for="lastNameInput">Last Name</label>
+						<input class="u-full-width" type="text" placeholder="Last Name" id="lastNameInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns">
+						<label for="cityInput">Your City</label>
+						<input class="u-full-width" type="text" placeholder="City, State, Country" id="cityInput">
+					</div>					
+				</div>
+				<div class="row">
+					<div class="six columns">
+						<label for="usernameInput">Username</label>
+						<input class="u-full-width" type="text" placeholder="Username" id="usernameInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns">
+						<label for="passwordInput">Password</label>
+						<input class="u-full-width" type="password" placeholder="Password" id="passwordInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns">
+						<label for="confirmPasswordInput">Confirm Password</label>
+						<input class="u-full-width" type="password" placeholder="Confirm Password" id="confirmPasswordInput">
+					</div>
+				</div>
+				<div class="row">
+					<input class="button-primary" type="submit" value="Submit" id="submit-signup">
+				</div>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
