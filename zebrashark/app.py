@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import flask
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def echo(value):
 
 @app.route("/index")
 def index():
-    return flask.render_template('index.html')
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run()
