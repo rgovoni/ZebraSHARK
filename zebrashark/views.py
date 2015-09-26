@@ -17,10 +17,6 @@ def view_echo(value):
     response = {"input": value}
     return flask.jsonify(response)
 
-@app.route("/about")
-def view_about():
-    return "this is what is up"
-
 @app.route("/conversation")
 def view_conversation():
     return render_template('conversation.html')
