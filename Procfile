@@ -1,0 +1,1 @@
+web: gunicorn zebrashark:app --log-file=-
