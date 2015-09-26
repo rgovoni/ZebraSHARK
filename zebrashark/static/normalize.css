@@ -441,6 +441,9 @@ hr.small {
 .previewConvo {
   clear: both;
 }
+#nav {
+  text-transform: uppercase;
+}
 .spaced {
   margin: 3rem 0;
 }
