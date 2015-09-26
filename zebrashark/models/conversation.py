@@ -1,15 +1,19 @@
-class Converation(db.Model):
-    votes = db.Column(db.Integer)
-    text = db.Column(db.String)
-    stance = db.Column(db.String)
-    topic = db.Column(db.String)
+from rom import Model,String,OneToMany,OneToOne,DateTime
 
-    def as_dict(self):
-        obj = {
-            'name': self.name,
-            'text': self.text,
-            'stance': self.stance,
-            'topic': self.topic,
-            ...
-        }
-        return obj
+class Conversation(Model):
+    votes = OneToMany('Vote')
+    entries = OneToMany('ConversationEntry')
+    topic = String(required=True)
+    participants = OneToMany('ConversationParticipant')
+
+class ConversationEntry(Model):
+    user = OneToOne('User','no action')
+    text = String(required=True)
+    time = DateTime(required=True)
+
+class ConversationParticipant(Model):
+    user = OneToOne('User','no action')
+    stance = String(required=True)
+
+
+

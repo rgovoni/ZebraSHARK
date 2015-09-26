@@ -1,11 +1,9 @@
-class Vote(db.Model):
-    user = db.Column(db.String(128), nullable=False)
-    value = db.Column(db.Integer)
+from rom import Model,String,Integer,OneToOne
 
-    def as_dict(self):
-        obj = {
-            'value': self.value,
-            'user': self.user,
-            ...
-        }
-        return obj
+class Vote(Model):
+    user = OneToOne('User','no action',required=True)
+    score = Integer(required=True)
+    conversation = OneToOne('Conversation','no action',required=True)
+    unique_together = [
+        ('user','conversation'),
+    ]

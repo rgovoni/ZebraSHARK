@@ -1,10 +1,8 @@
-class User(db.Model):
-    name = db.Column(db.String(128), nullable=False)
-    conversation = db.Column(db.)
+from rom import Model,String,OneToMany
 
-    def as_dict(self):
-        obj = {
-            'name': self.name,
-            ...
-        }
-        return obj
+class User(Model):
+    email_address = String(required=True, unique=True)
+    name = String(required=True, unique=True)
+    hash = String(required=True)
+    conversation_entries = OneToMany('ConversationEntry','no action')
+    conversations = OneToMany('ConversationParticipant')
