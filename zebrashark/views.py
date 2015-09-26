@@ -1,4 +1,3 @@
-from flask import render_template
 import flask
 
 from zebrashark.app import app
@@ -6,11 +5,11 @@ from zebrashark.app import app
 
 @app.route("/")
 def view_index():
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 @app.route("/login")
 def view_login():
-    return render_template('login.html')
+    return app.send_static_file('login.html')
 
 @app.route("/test/<value>")
 def view_echo(value):
@@ -19,12 +18,12 @@ def view_echo(value):
 
 @app.route("/conversation")
 def view_conversation():
-    return render_template('conversation.html')
+    return app.send_static_file('conversation.html')
 
 @app.route("/signup")
 def view_signup():
-    return render_template('signup.html')
+    return app.send_static_file('signup.html')
 
 @app.route("/profile")
 def view_profile():
-    return render_template('profile.html')
+    return app.send_static_file('profile.html')
