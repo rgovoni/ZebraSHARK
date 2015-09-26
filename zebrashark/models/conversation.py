@@ -11,8 +11,8 @@ class Conversation(Model):
             "id": self.id,
             "question": self.question.to_dict(),
             "rating": self.compute_rating(),
-            "users": [p.to_dict() for p in self.participants],
-            "messages": [e.to_dict() for e in self.entries]
+            "users": [p.to_json() for p in self.participants],
+            "messages": [e.to_json() for e in self.entries]
         }
 
     def compute_rating(self):
@@ -24,10 +24,22 @@ class ConversationEntry(Model):
     text = String(required=True)
     time = DateTime(required=True)
 
+    def to_json(self):
+        return {
+            "user"
+        }
+
 class ConversationParticipant(Model):
     user = OneToOne('User', 'no action')
     conversation = OneToOne('Conversation', 'no action')
     stance = String(required=True)
+
+    def to_json(self):
+        return {
+            "user": self.user.to_json(),
+            "stance": self.stance
+        }
+
 
 
 

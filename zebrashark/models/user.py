@@ -13,3 +13,10 @@ class User(Model):
     conversations = OneToMany('ConversationParticipant')
     stance_value = OneToMany('Stance')
     survey_answer = OneToOne('Answer', 'no action')
+
+    def to_json(self):
+        return {
+            "email": self.email_address,
+            "name": self.name,
+            "id": self.id
+        }
