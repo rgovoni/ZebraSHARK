@@ -7,6 +7,9 @@ from zebrashark.models.user import User
 
 from hashlib import md5
 
+import logging
+logger = logging.getLogger(__name__)
+
 @app.route('/api/conversation', methods=['GET'])
 def get_conversations():
     password = "hunter2"
