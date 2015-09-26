@@ -12,7 +12,7 @@
 	<div class="header">
 		<div id="nav" class="twelve columns">
 			<ul>
-				<li><a href="#">Logout</a></li>
+				<li><a href="/login">Login</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="/">Home</a></li>
@@ -26,21 +26,21 @@
 			</div>
 		</div>
 		<div class="login-container">
-			<form action="/api/signup" method="post">
+			<form action="/api/login" method="post">
 				<div class="row">
 					<div class="six columns offset-by-three">
 						<label for="emailInput">Email</label>
-						<input class="u-full-width" type="email" placeholder="email@website.com" id="emailInput">
+						<input class="u-full-width" type="email" placeholder="email@website.com" id="emailInput" name="emailInput">
 					</div>
 				</div>
 				<div class="row">
 					<div class="six columns offset-by-three">
 						<label for="passwordInput">Password</label>
-						<input class="u-full-width" type="password" placeholder="Password" id="passwordInput">
+						<input class="u-full-width" type="password" placeholder="Password" id="passwordInput" name="passwordInput">
 					</div>
 				</div>
 				<div class="row submit-button">
-					<input class="button-primary six columns offset-by-three" type="submit" value="Submit" id="submit-signup">
+					<input class="button-primary six columns offset-by-three" type="submit" value="Submit" id="submit-signup" name="submit">
 				</div>
 			</form>
 		</div>

@@ -1,5 +1,6 @@
 from datetime import datetime
 import flask
+from zebrashark.api.login import requires_auth
 from zebrashark.app import app
 from zebrashark.models.conversation import Conversation, ConversationEntry, ConversationParticipant
 from zebrashark.models.question import Question
