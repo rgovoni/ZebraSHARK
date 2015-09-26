@@ -49,3 +49,7 @@ def add_new_entry(id):
     conversation.append(new_message)
     conversation.save()
     return '', 200
+
+@app.route('/api/conversation/<id>')
+def get_conversation(id):
+    return Conversation.get(id).to_json()
