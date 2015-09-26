@@ -24,7 +24,8 @@ def get_conversations():
         ConversationParticipant(user=user_one, stance="KILL ALL UNICORNS"),
         ConversationParticipant(user=user_two, stance="SAVE THE UNICORNS"),
                     ]
-    question = Question(text="Should unicorn hunting be outlawed?", topic="Conservation")
+    question_text = "Should unicorn hunting be outlawed?"
+    question = Question.get_by(text=question_text) or Question(text=question_text, topic="Conservation")
     conversation = Conversation(
         votes=[],
         entries=entries,
