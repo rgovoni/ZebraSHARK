@@ -1,6 +1,6 @@
-class User(db.Model):
-    name = db.Column(db.String(128), nullable=False)
-    conversation = db.Column(db.)
+class Question(db.Model):
+    text = db.Column(db.String)
+    topic = db.Column(db.String)
 
     def as_dict(self):
         obj = {
