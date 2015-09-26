@@ -19,7 +19,8 @@
   </div>
 <script id="home-template" type="text/x-handlebars-template">
   <div class="own container">
-    <h2>Your Active Conversations</h2>
+    <h2 class="home-headers">Your Active Conversations</h2>
+    <hr class="small">
     {{#each yours}}
     <div class="previewConvo">
       <div class="row">
@@ -47,7 +48,8 @@
   </div>
 
   <div class="featured container">
-  <h2>Featured Conversations</h2>
+  <h6 class="home-headers">Featured Conversations</h6>
+  <hr class="small">
   {{#each featured}}
   <div class="previewConvo">
     <div class="row">
