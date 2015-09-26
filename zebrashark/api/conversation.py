@@ -35,4 +35,4 @@ def get_conversations():
         participaints=participants,
         question=question)
 
-    return flask.jsonify([conversation.to_json()]), 200
+    return flask.jsonify({"conversations": [conversation.to_json()]}), 200
