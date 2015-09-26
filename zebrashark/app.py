@@ -4,6 +4,10 @@ from flask import Flask
 import redis
 import os
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 app = Flask(__name__)
 
 import zebrashark.api.signup

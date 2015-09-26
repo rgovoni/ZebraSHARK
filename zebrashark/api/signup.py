@@ -7,5 +7,5 @@ logger = logging.getLogger(__name__)
 
 @app.route("/api/signup", methods=["POST"])
 def signup():
-    logger.info("Got signup request: " + repr(flask.request))
-    return 200
+    logger.info("Got signup request: " + repr(flask.request.form))
+    return '', 200
