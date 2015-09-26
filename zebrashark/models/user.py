@@ -11,3 +11,4 @@ class User(Model):
     conversations = OneToMany('ConversationParticipant')
     stance_value = OneToMany('Stance')
     survey_answer = OneToOne('Answer', 'no action')
+    pro_pic = String(required=True, unique=True)

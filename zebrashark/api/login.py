@@ -25,7 +25,7 @@ def check_auth(username, password):
     user=User.get_by(email_address=username)
     if user == None:
         return False
-    if md5(password).hexdigest() != user.hash
+    if md5(password).hexdigest() != user.hash:
         return False
     return True
 
