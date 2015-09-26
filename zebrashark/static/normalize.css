@@ -425,3 +425,10 @@ td,
 th {
   padding: 0;
 }
+
+.spaced {
+  margin: 3rem 0;
+}
+.img-circle {
+  border-radius: 50%;
+}
