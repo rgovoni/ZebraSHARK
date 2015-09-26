@@ -1,16 +1,78 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset="utf-8" />
-  <title>Hello world!</title>
-  <link type="text/css" rel="stylesheet"
-        href="/../static/Skeleton-2.0.4/css/normalize.css" />
-  <link type="text/css" rel="stylesheet"
-        href="/../static/Skeleton-2.0.4/css/skeleton.css" />
-</head>
+<script src="../static/handlebars-v4.0.2.js"> </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!-- NORMALIZE IS POSSIBLY NOT FOR US -->
+<link rel="stylesheet" href="../static/normalize.css">
+<link rel="stylesheet" href="../static/skeleton.css">
+
 <body>
+<script id="home-template" type="text/x-handlebars-template">
+  <div class="own container">
+    <h2>Your Active Conversations</h2>
+    {{#each yours}}
+    <div class="previewConvo">
+      <div class="row">
+        <div class="ten columns">
+          <h3>Q: {{question}}</h3>
+        </div>
+        <div class="two columns">
+          <h3 class="u-pull-right">+{{rating}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <p class="u-pull-left">{{user.0.name}} says:<br> {{user.0.stance}}</p>
+        </div>
+        <div class="six columns">
+          <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
+        </div>
+      </div>
+      <div class="row" style="text-align:center">
+        <a class="button" href="conversation.html">View Conversation</a>
+      </div>
+    </div>
+    <hr>
+    {{/each}}
+  </div>
 
-DOPENESS
+  <div class="featured container">
+  <h2>Featured Conversations</h2>
+  {{#each featured}}
+  <div class="previewConvo">
+    <div class="row">
+      <div class="ten columns">
+        <h3>Q: {{question}}</h3>
+      </div>
+      <div class="two columns">
+        <h3 class="u-pull-right">+{{rating}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <p class="u-pull-left">{{user.0.name}} says:<br> {{user.0.stance}}</p>
+      </div>
+      <div class="six columns">
+        <p class="u-pull-right">{{user.1.name}} says:<br> {{user.1.stance}}</p>
+      </div>
+    </div>
+    <div class="row" style="text-align:center">
+      <a class="button" href="#">View Conversation</a>
+    </div>
+    <hr>
+    {{/each}}
+  </div>
 
+</script>
+
+<script>
+  var source = $("#home-template").html();
+  var template = Handlebars.compile(source);
+  var text = '{"yours": [{"id": "001", "question": "What is the best color?", "rating": "128",'+ 
+                          '"user": [{"name": "Chuck", "stance": "I have always loved blue."},{"name": "Dave", "stance": "My favorite color is blood."}]},'+
+                         '{"id": "002", "question": "How do you feel about cats?", "rating": "2",'+ 
+                          '"user": [{"name": "Chuck", "stance": "I like cats!"},{"name": "Dave", "stance": "Cats eat their owners if they die."}]}],'+
+                '"featured":[{"id": "003", "question": "How about that pope guy?", "rating": "103",'+
+                          '"user": [{"name": "Chuck", "stance": "The pope is dope."},{"name": "Dave", "stance": "Nah, bruh."}]}]}';              
+  var context = JSON.parse(text);
+  $(document.body).append(template(context));
+</script>
 </body>
-</html>
