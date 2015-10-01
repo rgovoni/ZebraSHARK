@@ -1,3 +1,4 @@
 # ZebraSHARK
+== README
 
-# Hackathon project using Flask to support a chat stream 
+Hackathon project using Flask to support a chat stream 
